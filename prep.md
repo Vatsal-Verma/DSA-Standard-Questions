@@ -211,7 +211,7 @@ class Main {
     }
 }
 ```
-# Spiral Matrix
+### Spiral Matrix
 
 ```
 class Solution {
@@ -294,6 +294,30 @@ class Solution {
     }
 }
 ```
+### Maximum Product Subarray
+```
+Here we are supposed to find prefix product and suffix product, then we need to find maxium of them, if either prefix or suffix product becomes 0 then we update them to 1
+```
+```
+class Solution {
+    public int maxProduct(int[] nums) {
+        int pre = 1;
+        int suff = 1; 
+        int maxi = 0;
+
+        for(int i=0; i<nums.length; i++ ) {
+            if(suff == 0) suff = 1;
+            if(pre == 0) pre = 1;
+            pre *= nums[i];
+            suff *= nums[ nums.length - 1 - i ];
+            maxi = Math.max(maxi, Math.max(pre, suff));
+        }
+
+        if(nums.length == 1) return nums[0];
+        return maxi;
+    }
+}
+```
 ### Kadane's algorithm (max subarray sum)
 
 ```
@@ -348,3 +372,4 @@ class Solution {
     }
 }
 ```
+
