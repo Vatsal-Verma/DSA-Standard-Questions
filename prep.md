@@ -130,3 +130,21 @@ class Solution {
 ```
 
 ### Group Anagrams
+```
+class Solution {
+    public List<List<String>> groupAnagrams(String[] str) {
+        HashMap<String, List<String>> mp = new HashMap<>();
+
+        for(int i=0; i<str.length; i ++ ) {
+            char[] ch = str[i].toCharArray();
+            Arrays.sort(ch);
+            String temp = String.valueOf(ch);
+
+            mp.putIfAbsent(temp, new ArrayList<>());
+            mp.get(temp).add(str[i]);
+        }
+        
+        return new ArrayList<>(mp.values());
+    }
+}
+```
