@@ -294,3 +294,21 @@ class Solution {
     }
 }
 ```
+# Kadane's algorithm (max subarray sum)
+
+```
+class Solution {
+    public int maxSubArray(int[] nums) {
+        long maxi = Integer.MIN_VALUE;
+        long sum = 0;
+
+        for(int i: nums) {
+            sum += i;
+            maxi = Math.max(maxi, sum);
+            if(sum < 0) sum = 0;
+        }
+        return (int)maxi;
+    }
+}
+```
+
