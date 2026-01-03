@@ -280,7 +280,7 @@ class Solution {
     }
 }
 ```
-# Move all zero to end
+### Move all zero to end
 ```
 class Solution {
     public void moveZeroes(int[] nums) {
