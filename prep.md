@@ -184,3 +184,26 @@ class Solution {
 }
 ```
 ### Generate all the permuatations with n1, n2, n3 ... numbers of each character
+
+```
+class Main {
+    public static List<String> result = new ArrayList<>();
+    public static void generate(int a, int b, int c, String temp) {
+        if(a == 0 && b == 0 && c == 0) {
+            result.add(temp);
+            return;
+        }
+        
+        if(a > 0) generate(a - 1, b, c, temp + "a");
+        if(b > 0) generate(a, b - 1, c, temp + "b");
+        if(c > 0) generate(a, b, c - 1, temp + "c");
+    }
+    public static void main(String[] args) {
+        String str = "abc";
+        generate( 1, 1, 1, "");
+        for(String i: result) {
+            System.out.println(i);
+        }
+    }
+}
+```
