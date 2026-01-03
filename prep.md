@@ -183,3 +183,4 @@ class Solution {
     }
 }
 ```
+### Generate all the permuatations with n1, n2, n3 ... numbers of each character
