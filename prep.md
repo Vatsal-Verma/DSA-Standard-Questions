@@ -84,7 +84,7 @@ class Solution {
 }
 ```
 
-# 3 Sum
+### 3 Sum
 
 ```
 class Solution {
