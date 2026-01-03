@@ -84,6 +84,8 @@ class Solution {
 }
 ```
 
+### 2 Sum
+
 ### 3 Sum
 
 ```
@@ -110,5 +112,4 @@ class Solution {
     }
 }
 ```
-### 2 Sum
 
