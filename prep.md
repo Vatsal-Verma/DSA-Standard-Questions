@@ -294,7 +294,7 @@ class Solution {
     }
 }
 ```
-# Kadane's algorithm (max subarray sum)
+### Kadane's algorithm (max subarray sum)
 
 ```
 class Solution {
@@ -312,3 +312,20 @@ class Solution {
 }
 ```
 
+### Best day to buy and sell stocks 
+
+```
+class Solution {
+    public int maxProfit(int[] prices) {
+        int mini = Integer.MAX_VALUE;
+        int result = 0;
+
+        for(int i=0; i<prices.length; i ++) {
+            mini = Math.min(mini, prices[i]);
+            result = Math.max(result, prices[i] - mini);
+        }   
+
+        return result;
+    }
+}
+```
