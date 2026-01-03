@@ -148,3 +148,38 @@ class Solution {
     }
 }
 ```
+### Generate all permutations
+
+```
+class Solution {
+    public void generate(int[] nums, int index, List<List<Integer>> result) {
+        if(index == nums.length) {
+            List<Integer> lst = new ArrayList<>();
+            for(int i: nums) {
+                lst.add(i);
+            }
+            result.add(lst);
+            return;
+        }
+
+        for(int i=index; i<nums.length; i++ ) {
+            swap(nums, index, i);
+            generate(nums, index + 1, result);
+            swap(nums, index, i);
+        }
+    }
+    
+    public void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public List<List<Integer>> permute(int[] nums) {
+        List<Integer> lst = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
+        generate(nums, 0, result);
+        return result;
+    }
+}
+```
