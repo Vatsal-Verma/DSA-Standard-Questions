@@ -88,18 +88,25 @@ class Solution {
 
 ```
 class Solution {
-    public String intToRoman(int num) {
-        int nums[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-        String som[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV","I"};
-        
-        StringBuilder sb = new StringBuilder();
+    public List<List<Integer>> threeSum(int[] nums) {
+        Set<List<Integer>> set = new HashSet<>();
+
         for(int i=0; i<nums.length; i++ ) {
-            while(nums[i] <= num) {
-                sb.append(som[i]);
-                num -= nums[i];
+            Set<Integer> lst = new HashSet<>();
+            for(int j=i+1; j<nums.length; j ++) {
+                int third = -(nums[i] + nums[j]);
+                if(lst.contains(third)) {
+                    List<Integer> temp = Arrays.asList(nums[i], nums[j], third);
+                    Collections.sort(temp);
+                    set.add(temp);
+                } 
+                lst.add(nums[j]);
             }
         }
-        return sb.toString();
+
+        List<List<Integer>> result = new ArrayList<>(set);
+        return result;
+
     }
 }
 ```
