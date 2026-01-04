@@ -833,3 +833,37 @@ class Solution {
     }
 }
 ```
+
+### Longest substring length with K distinct characters
+```
+class Solution {
+    public int longestKSubstr(String s, int k) {
+        int left = 0, right = 0;
+        int maxLen = -1;
+
+        HashMap<Character, Integer> mp = new HashMap<>();
+
+        while (right < s.length()) {
+            char ch = s.charAt(right);
+            mp.put(ch, mp.getOrDefault(ch, 0) + 1);
+
+            while (mp.size() > k) {
+                char leftChar = s.charAt(left);
+                mp.put(leftChar, mp.get(leftChar) - 1);
+                if (mp.get(leftChar) == 0) {
+                    mp.remove(leftChar);
+                }
+                left++;
+            }
+            if (mp.size() == k) {
+                maxLen = Math.max(maxLen, right - left + 1);
+            }
+
+            right++;
+        }
+
+        return maxLen;
+    }
+}
+
+```
