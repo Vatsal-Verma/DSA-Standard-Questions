@@ -540,3 +540,21 @@ class Solution {
     }
 }
 ```
+### Reverse a LinkedList
+```
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode temp = head;
+        ListNode prev = null;
+
+        while(temp != null) {
+            ListNode nextNode = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = nextNode;
+        }
+
+        return prev;
+    }
+}
+```
