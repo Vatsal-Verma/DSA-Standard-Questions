@@ -420,3 +420,44 @@ class Main {
 output:
 1 5 10 10 5 1 
 ```
+### First Missing and repeating element
+```
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static void main(String[] args) {
+        
+        int arr[] = {1, 2, 2, 3, 4, 5, 7};
+        
+        int n = arr.length;
+        
+        int sn = (n * (n + 1) / 2);
+        int ssq = (n * (n + 1) * (2 * n + 1) ) / 6;
+        
+        int s1 = 0;
+        int s2 = 0;
+        
+        for(int i: arr) {
+            s1 = s1 + i;
+            s2 = s2 + (i * i);
+        }
+        
+        int val1 = s1 - sn;
+        int val2 = s2 - ssq;
+        
+        val2 = val2 / val1;
+        
+        int x = (val1 + val2) / 2;
+        int y = x - val1;
+        
+        System.out.println(x + " " + y);
+        
+        
+    }
+}
+
+```
+```
+output: 2 6
+```
