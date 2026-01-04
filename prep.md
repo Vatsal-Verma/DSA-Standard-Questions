@@ -699,3 +699,29 @@ class Solution {
     }
 }
 ```
+# Sliding Window (Varible Size)
+
+### Longest Subarray without repeating characters
+```
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int maxLen = 0;
+        int right = 0;
+        int left = 0;
+        HashMap<Character, Integer> mp = new HashMap<>();
+
+        while(right < s.length()) {
+            mp.put(s.charAt(right), mp.getOrDefault(s.charAt(right), 0) + 1);
+
+            while(mp.get(s.charAt(right)) > 1) {
+                mp.put(s.charAt(left), mp.get(s.charAt(left)) - 1);
+                left ++;
+            }
+
+            maxLen = Math.max(maxLen, right - left + 1);
+            right ++;
+        }
+        return maxLen;
+    }
+}
+```
