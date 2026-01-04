@@ -811,3 +811,25 @@ class Solution {
     
 }
 ```
+### Count substring containing all the three characters
+```
+class Solution {
+    public boolean check(String str) {
+        return str.contains("a") && str.contains("b") && str.contains("c");
+    }
+    public int numberOfSubstrings(String s) {
+        int right = 0;
+        int left = 0;
+        int count = 0;
+
+        while(right < s.length()) {
+            right ++;
+            while(check(s.substring(left, right))) {
+                count += s.length() - right + 1;
+                left ++;
+            }
+        }
+        return count;
+    }
+}
+```
