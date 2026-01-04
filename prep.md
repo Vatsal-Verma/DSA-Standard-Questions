@@ -401,3 +401,22 @@ output:
   1 4 6 4 1 
 1 5 10 10 5 1 
 ```
+### Print nth row of pascal's triangle
+```
+class Main {
+    public static void main(String[] args) {
+        int n = 6;  
+            int ans = 1;
+            System.out.print("1 ");
+            for(int j=1; j<i; j ++) {
+                ans = ans * (i - j);
+                ans = ans / j;
+                System.out.print(ans +" ");
+         }
+    }
+}
+```
+```
+output:
+1 5 10 10 5 1 
+```
