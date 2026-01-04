@@ -914,3 +914,35 @@ class Solution {
     }
 }
 ```
+
+# Stack & Queue
+### Next Greater Element
+```
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {6, 8, 0, 3, 1};
+        int[] result = new int[arr.length];
+        Arrays.fill(result, -1);
+        Stack<Integer> stk = new Stack<>();
+    
+        
+        for(int i=arr.length - 1; i>=0; i-- ) {
+            while(!stk.isEmpty() && arr[i] >= stk.peek()) {
+                stk.pop();
+            }
+            
+            if(!stk.isEmpty()) {
+                result[i] = stk.peek();
+            }
+            
+            stk.push(arr[i]);
+        }
+        
+        for(int i: result) System.out.print(i + " ");
+    }
+}
+```
