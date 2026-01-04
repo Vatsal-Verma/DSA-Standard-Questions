@@ -493,4 +493,34 @@ class Solution {
 }
 
 ```
+### Longest Pallindromic Substring (O(n^2))
+```
+class Solution {
+    public boolean check(String s, int left, int right) {
+       while(left < right) {
+        if(s.charAt(left) != s.charAt(right)) {
+            return false;
+        }
+        left ++;
+        right --;
+       }
+       return true;
+    }
 
+    public String longestPalindrome(String s) {
+        int start = 0;
+        int maxLen = 0;
+
+        for(int i = 0; i < s.length(); i++) {
+            for(int j = i; j < s.length(); j++) {
+                if((j - i + 1) > maxLen && check(s, i, j)) {
+                    maxLen = j - i + 1;
+                    start = i;
+                }  
+            }
+        }
+        return s.substring(start, start + maxLen);
+    }   
+}
+
+```
