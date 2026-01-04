@@ -408,8 +408,8 @@ class Main {
         int n = 6;  
             int ans = 1;
             System.out.print("1 ");
-            for(int j=1; j<i; j ++) {
-                ans = ans * (i - j);
+            for(int j=1; j<n; j ++) {
+                ans = ans * (n - j);
                 ans = ans / j;
                 System.out.print(ans +" ");
          }
