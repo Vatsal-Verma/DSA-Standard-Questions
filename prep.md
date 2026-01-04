@@ -231,6 +231,26 @@ class Main {
     }
 }
 ```
+### Find first and last occurence of an element
+```
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int first = -1;
+        int last = -1;
+
+        for(int i=0; i<nums.length; i++ ) {
+            if(nums[i] == target) {
+                if(first == -1) {
+                    first = i;
+                }
+                last = i;
+            }
+        }   
+        
+        return new int[] {first, last};
+    }
+}
+```
 ### Spiral Matrix
 
 ```
