@@ -367,9 +367,37 @@ class Solution {
                 result += prices[i] - prices[i - 1];
             }
         }
-
         return result;
     }
 }
 ```
 
+### Print Pascal's Triangle 
+
+```
+class Main {
+    public static void main(String[] args) {
+        int n = 6;
+        for(int i=1; i<=n; i ++) {
+            int ans = 1;
+            System.out.print("1 ");
+            for(int j=1; j<i; j ++) {
+                ans = ans * (i - j);
+                ans = ans / j;
+                System.out.print(ans +" ");
+            }
+            System.out.println();
+        }
+        
+    }
+}
+```
+```
+output:
+      1 
+     1 1 
+    1 2 1 
+   1 3 3 1 
+  1 4 6 4 1 
+1 5 10 10 5 1 
+```
