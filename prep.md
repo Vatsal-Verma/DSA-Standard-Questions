@@ -937,6 +937,27 @@ class Solution {
 }
 ```
 
+### Minimum Number of coins 
+```
+class Main {
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 5, 10, 20, 50, 100, 500, 1000};
+        int target = 555;
+        
+        List<Integer> result = new ArrayList<>();
+        
+        for(int i=nums.length - 1; i>=0; i --) {
+            while(target >= nums[i]) {
+                target -= nums[i];
+                result.add(nums[i]);
+            }
+        }
+        
+        result.forEach(n -> System.out.print(n + " "));
+    }
+}
+```
+
 # Stack & Queue
 ### Next Greater Element
 ```
