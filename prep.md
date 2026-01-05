@@ -1320,3 +1320,51 @@ class Solution {
     }
 }
 ```
+
+### top view of Binary Tree
+```
+class Solution {
+    class Pair {
+        Node node; 
+        int pos; 
+        Pair(Node node, int pos) {
+            this.node = node;
+            this.pos = pos;
+        }
+    }
+    public ArrayList<Integer> topView(Node root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        if(root == null) return result;
+        
+        Queue<Pair> nq = new LinkedList<>();
+        nq.add(new Pair(root, 0));
+        
+        TreeMap<Integer, Integer> mp = new TreeMap<>();
+        
+        while(!nq.isEmpty()){
+            
+            Pair pair = nq.poll();
+            Node ver = pair.node;
+            int pos = pair.pos;
+            
+            if(!mp.containsKey(pos)) {
+                mp.put(pos, ver.data);
+            } 
+            
+            if(ver.left != null) {
+                nq.add(new Pair(ver.left, pos - 1));
+            }
+            
+            if(ver.right != null) {
+                nq.add(new Pair(ver.right, pos + 1));
+            }
+        }
+        
+        for(int i: mp.keySet()) {
+            result.add(mp.get(i));
+        }
+        
+        return result;
+    }
+}
+```
