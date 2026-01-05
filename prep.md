@@ -1223,3 +1223,49 @@ class Solution {
     }
 }
 ```
+
+# Binary Tree 
+
+### Diameter of the binary Tree
+```
+// left subtree depth + right subtree depth
+class Solution {
+    public int diameter = 0;
+    public int height(TreeNode root) {
+          if(root == null) return 0;
+
+        int lh = height(root.left);
+        int rh = height(root.right);
+
+        diameter = Math.max(diameter, lh + rh);
+
+        return 1 + Math.max(lh, rh);
+    }
+    public int diameterOfBinaryTree(TreeNode root) {
+        int k = height(root);
+        return diameter;
+    }
+}
+```
+### Binary Tree Maximum Path Sum
+```
+class Solution {
+    int maxPath = Integer.MIN_VALUE;
+
+    public int dfs(TreeNode root) {
+        if (root == null) return 0;
+
+        int lh = Math.max(0, dfs(root.left));
+        int rh = Math.max(0, dfs(root.right));
+
+        maxPath = Math.max(maxPath, root.val + lh + rh);
+        return root.val + Math.max(lh, rh);
+    }
+
+    public int maxPathSum(TreeNode root) {
+        dfs(root);
+        return maxPath;
+    }
+}
+
+```
