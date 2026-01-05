@@ -1639,3 +1639,100 @@ class Solution {
     }
 }
 ```
+### Detect cycle in undirected graph (BFS)
+```class Pair {
+    int node;
+    int parent;
+    Pair(int node, int parent) {
+        this.node = node;
+        this.parent = parent;
+    }
+}
+class Solution {
+    public boolean dfs(int node, int parent, List<List<Integer>> adj, int[] vis) {
+       Queue<Pair> nq = new LinkedList<>();
+       nq.add(new Pair(node, -1));
+       vis[node] = 1;
+       while(!nq.isEmpty()) {
+           Pair p = nq.poll();
+           int ver = p.node;
+           int par = p.parent;
+           
+           for(int i: adj.get(ver)) {
+               if(vis[i] == 0) {
+                   nq.add(new Pair(i, ver));
+                   vis[i] = 1;
+               }
+               else if(par != i) return true;
+           }
+       }
+           return false;
+    }
+
+    public boolean isCycle(int v, int[][] edges) {
+        List<List<Integer>> adj = new ArrayList<>();
+
+        for (int i = 0; i < v; i++) adj.add(new ArrayList<>());
+
+        for (int[] i : edges) {
+            int u = i[0];
+            int v1 = i[1];
+
+            adj.get(u).add(v1);
+            adj.get(v1).add(u);
+        }
+
+        int[] vis = new int[v];
+
+        for (int i = 0; i < v; i++) {
+            if (vis[i] == 0) {
+                if (dfs(i, -1, adj, vis)) return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+### Detect cycle in undirected Graph (DFS)
+```
+class Solution {
+    public boolean dfs(int node, int parent, List<List<Integer>> adj, int[] vis) {
+        vis[node] = 1;
+
+        for (int i : adj.get(node)) {
+            if (vis[i] == 0) {
+                if (dfs(i, node, adj, vis)) return true;
+            } 
+            else if (i != parent) { 
+                return true; 
+            }
+        }
+        return false;
+    }
+
+    public boolean isCycle(int v, int[][] edges) {
+        List<List<Integer>> adj = new ArrayList<>();
+
+        for (int i = 0; i < v; i++) adj.add(new ArrayList<>());
+
+        for (int[] i : edges) {
+            int u = i[0];
+            int v1 = i[1];
+
+            adj.get(u).add(v1);
+            adj.get(v1).add(u);
+        }
+
+        int[] vis = new int[v];
+
+        for (int i = 0; i < v; i++) {
+            if (vis[i] == 0) {
+                if (dfs(i, -1, adj, vis)) return true;
+            }
+        }
+        return false;
+    }
+}
+
+```
