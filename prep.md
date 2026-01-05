@@ -1068,7 +1068,31 @@ class Solution {
     }
 }
 ```
+### Jump Game II
+```
+class Solution {
+    public int jump(int[] nums) {
 
+        int left = 0;
+        int right = 0;
+        int far = 0;
+        int jumps = 0;
+
+        while(right < nums.length - 1) {
+            far = 0;
+            for(int i=left; i<=right; i++ ) {
+                far = Math.max(far, nums[i] + i);
+            }
+
+            left = right + 1;
+            right = far;
+            jumps ++;
+        }
+
+        return jumps;
+    }
+}
+```
 
 # Stack & Queue
 ### Next Greater Element
