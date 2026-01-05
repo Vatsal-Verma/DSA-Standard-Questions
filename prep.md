@@ -1379,3 +1379,26 @@ class Solution {
     }
 }
 ```
+### Path Sum II
+```
+class Solution {
+    public void dfs(TreeNode node, int targetSum, List<Integer> path, List<List<Integer>> result, int sum) {
+        if(node == null) return;
+        sum += node.val;
+        path.add(node.val);
+        if(node.left == null && node.right == null && sum == targetSum) {
+            result.add(new ArrayList<>(path));
+        } else {
+            dfs(node.left, targetSum, path, result, sum);
+            dfs(node.right, targetSum, path, result, sum);
+        }
+        path.remove(path.size() - 1);
+    }
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
+        dfs(root, targetSum, path, result, 0);
+        return result;
+    }
+}
+```
