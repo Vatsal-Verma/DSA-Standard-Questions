@@ -1608,3 +1608,34 @@ class Solution{
     }
 }
 ```
+### Flood Fill
+```
+class Solution {
+    public void flood(int row, int col, int[][] image, int[][] vis, int color, int iniColor, int[] dRow, int[] dCol) {
+        vis[row][col] = color;
+        int n = image.length;
+        int m = image[0].length;
+
+        for(int i=0; i<4; i++) {
+            int nrow = row + dRow[i];
+            int ncol = col + dCol[i];
+
+            if(nrow < n && nrow >=0 && ncol < m && ncol >= 0 && image[nrow][ncol] == iniColor && vis[nrow][ncol] != color) {
+                flood(nrow, ncol, image, vis, color, iniColor, dRow, dCol);
+            }
+        }
+    }
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        int iniColor = image[sr][sc];
+        int n = image.length;
+        int m = image[0].length;
+        int vis[][] = image;
+        int[] dRow = {0, 1, 0, -1};
+        int[] dCol = {-1, 0, 1, 0};
+
+        flood(sr, sc, image, vis, color, iniColor, dRow, dCol);
+
+        return vis;
+    }
+}
+```
