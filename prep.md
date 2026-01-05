@@ -914,6 +914,33 @@ class Solution {
     }
 }
 ```
+class Solution {
+    public int[][] insert(int[][] intervals, int[] newInterval) {
+   
+        List<int[]> result = new ArrayList<>();
+        int i = 0;
+        int n = intervals.length;
+
+        while(i < n && intervals[i][1] < newInterval[0]) {
+            result.add(intervals[i]);
+            i ++;
+        }
+
+        while(i < n && intervals[i][0] <= newInterval[1]) {
+            newInterval[0] = Math.min(newInterval[0], intervals[i][0]);
+            newInterval[1] = Math.max(newInterval[1], intervals[i][1]);
+            i ++;
+        }
+        result.add(newInterval);
+
+        while(i < n) {
+            result.add(intervals[i]);
+            i ++;
+        }
+
+        return result.toArray(new int[0][]);
+    }
+}
 # Greedy Based Questions
 ### Assign Cookies
 ```
@@ -1202,34 +1229,6 @@ class Solution {
         }
 
         return result.toArray(new int[0][]);
-    }
-}
-```
-# Stack & Queue
-### Next Greater Element
-```
-import java.util.*;
-class Main {
-    public static void main(String[] args) {
-        int[] arr = {6, 8, 0, 3, 1};
-        int[] result = new int[arr.length];
-        Arrays.fill(result, -1);
-        Stack<Integer> stk = new Stack<>();
-    
-        
-        for(int i=arr.length - 1; i>=0; i-- ) {
-            while(!stk.isEmpty() && arr[i] >= stk.peek()) {
-                stk.pop();
-            }
-            
-            if(!stk.isEmpty()) {
-                result[i] = stk.peek();
-            }
-            
-            stk.push(arr[i]);
-        }
-        
-        for(int i: result) System.out.print(i + " ");
     }
 }
 ```
