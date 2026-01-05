@@ -1402,3 +1402,36 @@ class Solution {
     }
 }
 ```
+### Lowest Common Ancestor
+```
+
+class Solution {
+    public boolean dfs(TreeNode root, TreeNode target, List<TreeNode> lst) {
+        if(root == null) return false;
+        lst.add(root);
+
+        if(root == target) return true;
+
+        if(dfs(root.left, target, lst) || dfs(root.right, target, lst)) return true;
+
+        lst.remove(lst.size() - 1);
+        return false;
+    }
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        List<TreeNode> lst1 = new ArrayList<>();
+        List<TreeNode> lst2 = new ArrayList<>();
+
+        dfs(root, p, lst1);
+        dfs(root, q, lst2);
+
+        int i = 0;
+        
+        while(i < lst1.size() && i < lst2.size() && lst1.get(i) == lst2.get(i)) {
+            i ++;
+        }
+
+        return lst1.get(i - 1);
+
+    }
+}
+```
