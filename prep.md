@@ -1501,3 +1501,44 @@ class Solution {
     }
 }
 ```
+
+# Graph
+### Number of provinces (Number of connected componenets)
+```
+class Solution {
+    public void dfs(int node, List<List<Integer>> adj, int[] vis) {
+        vis[node] = 1;
+        for(int i: adj.get(node)) {
+            if(vis[i] == 0)
+            dfs(i, adj, vis);
+        }
+    }
+    public int findCircleNum(int[][] mat) {
+        int v = mat[0].length;
+        List<List<Integer>> adj = new ArrayList<>();
+        for(int i=0; i<v; i++ ) {
+            adj.add(new ArrayList<>());
+        }
+
+        for(int i=0; i<v; i++ ) {
+            for(int j=0; j<v; j ++) {
+                if(mat[i][j] == 1) {
+                adj.get(i).add(j);
+                adj.get(j).add(i);
+                }
+            }
+        }
+
+        int[] vis = new int[v];
+
+        int count = 0;
+        for(int i=0; i<v; i++ ) {
+            if(vis[i] == 0) {
+                dfs(i, adj, vis);
+                count ++;
+            }
+        }
+        return count;
+    }
+}
+```
