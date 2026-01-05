@@ -1093,6 +1093,43 @@ class Solution {
     }
 }
 ```
+### Candy 
+```
+class Solution {
+    public int candy(int[] arr) {
+        int n = arr.length;
+        int sum = 1;
+        int i = 1;
+
+        while(i < n) {
+            while(i < n && arr[i] == arr[i - 1]) {
+                i ++;
+                sum ++;
+                continue;
+            }
+
+            int peak = 1;
+            while(i < n && arr[i] > arr[i - 1]) {
+                peak ++;
+                sum += peak;
+                i ++;
+            }
+
+            int down = 1;
+            while(i < n && arr[i] < arr[i - 1]) {
+                sum += down;
+                down ++;
+                i ++;
+            }
+
+            if(down > peak) {
+                sum += (down - peak);
+            }
+        }
+        return sum;
+    }
+}
+```
 
 # Stack & Queue
 ### Next Greater Element
