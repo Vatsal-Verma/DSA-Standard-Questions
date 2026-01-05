@@ -1435,3 +1435,50 @@ class Solution {
     }
 }
 ```
+### Maximum width of the binary tree
+```
+class Pair{
+    TreeNode node;
+    long index;
+    Pair(TreeNode node, long index) {
+        this.node = node;
+        this.index = index;
+    }
+}
+class Solution {
+    public int widthOfBinaryTree(TreeNode root) {
+        if(root == null) return 0;
+        long result = 0;
+
+        Queue<Pair> nq = new LinkedList<>();
+        nq.add(new Pair(root, 0));
+
+        while(!nq.isEmpty()) {
+            long size = nq.size();
+            long min = nq.peek().index; 
+            long first = 0;
+            long last = 0;
+
+            for(int i=0; i<size; i ++) {
+                Pair p = nq.poll();
+                long index = p.index - min;
+
+                if(i == 0) first = index;
+                if(i == size - 1) last = index;
+
+                if(p.node.left != null) {
+                    nq.add(new Pair(p.node.left, 2 * index + 1));
+                }
+                
+                if(p.node.right != null) {
+                    nq.add(new Pair(p.node.right, 2 * index + 2));
+                }
+            }
+
+            result = Math.max(result, last - first + 1);
+        }
+
+        return (int)result;
+    }
+}
+```
