@@ -1155,6 +1155,26 @@ class Solution {
     }
 }
 ```
+### Non Overlapping intervals
+```
+class Solution {
+    public int eraseOverlapIntervals(int[][] intervals) {
+        int count = 1;
+        Arrays.sort(intervals, (a, b) -> a[1] - b[1]);
+
+        int start = intervals[0][0];
+        int end = intervals[0][1];
+
+        for(int i=0; i<intervals.length; i ++ ) {
+            if(intervals[i][0] >= end) {
+                end = intervals[i][1];
+                count ++;
+            }
+        }
+        return intervals.length - count;
+    }
+}
+```
 
 # Stack & Queue
 ### Next Greater Element
