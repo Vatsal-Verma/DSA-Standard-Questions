@@ -957,7 +957,35 @@ class Main {
     }
 }
 ```
+### fractional Knapsack
 
+```
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        double result = 0;
+        int arr[][] = {{60, 10}, {100, 20}, {120, 30}};
+        int cap = 50;
+        
+        Arrays.sort(arr, (a, b) ->
+            Double.compare((double) b[0] / b[1], (double) a[0] / a[1])
+        );
+        
+        for(int i = 0; i < arr.length; i++) {
+            if(cap >= arr[i][1]) {
+                result += arr[i][0];
+                cap -= arr[i][1];
+            } else {
+                result += ((double) arr[i][0] / arr[i][1]) * cap;
+                break; 
+            }
+        }
+        
+        System.out.println(result);
+    }
+}
+
+```
 # Stack & Queue
 ### Next Greater Element
 ```
