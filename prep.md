@@ -2270,3 +2270,60 @@ class Solution {
     }
 }
 ```
+### Dijkastra Algorithm (Using PQ)
+```
+class Pair {
+    int node;
+    int dist;
+
+    Pair(int node, int dist) {
+        this.node = node;
+        this.dist = dist;
+    }
+}
+
+class Solution {
+    public int[] dijkstra(int V, int[][] edges, int src) {
+
+        List<List<Pair>> adj = new ArrayList<>();
+        for (int i = 0; i < V; i++) adj.add(new ArrayList<>());
+
+        for (int[] e : edges) {
+            int u = e[0];
+            int v = e[1];
+            int w = e[2];
+
+            adj.get(u).add(new Pair(v, w));
+            adj.get(v).add(new Pair(u, w)); 
+        }
+
+        int[] dist = new int[V];
+        Arrays.fill(dist, (int)1e9);
+        dist[src] = 0;
+
+        PriorityQueue<Pair> pq =
+            new PriorityQueue<>((a, b) -> a.dist - b.dist);
+
+        pq.add(new Pair(src, 0));
+
+        while (!pq.isEmpty()) {
+            Pair cur = pq.poll();
+            int node = cur.node;
+            int curDist = cur.dist;
+            if (curDist > dist[node]) continue;
+
+            for (Pair it : adj.get(node)) {
+                int adjNode = it.node;
+                int edgeWt = it.dist;
+
+                if (dist[node] + edgeWt < dist[adjNode]) {
+                    dist[adjNode] = dist[node] + edgeWt;
+                    pq.add(new Pair(adjNode, dist[adjNode]));
+                }
+            }
+        }
+        return dist;
+    }
+}
+
+```
