@@ -2192,3 +2192,81 @@ class Solution {
 }
 
 ```
+### Shortest path in DAG
+```
+class Pair {
+    int first; 
+    int second;
+    Pair(int first, int second) {
+        this.first = first;
+        this.second = second;
+    }
+}
+
+class Solution {
+    
+    public void dfs(int node, int[] vis, List<List<Pair>> adj, Stack<Integer> stack) {
+        vis[node] = 1;
+        
+        for(Pair i: adj.get(node)) {
+            int adjan = i.first;
+            if(vis[adjan] == 0) {
+                dfs(adjan, vis, adj, stack);
+            }
+        }
+        
+        stack.push(node);
+    }
+    
+    public int[] shortestPath(int v, int E, int[][] edges) {
+        
+        int[] dis = new int[v];
+        int[] vis = new int[v];
+        
+        Stack<Integer> stack = new Stack<>();
+        
+        List<List<Pair>> adj = new ArrayList<>();
+        
+        for(int i=0; i<v; i++ ) adj.add(new ArrayList<>());
+        
+        for(int[] i: edges) {
+            int u = i[0];
+            int v1 = i[1];
+            int wt = i[2];
+            adj.get(u).add(new Pair(v1, wt));
+        }
+        
+        // Queue<Pair> nq = new LinkedList<>();
+        
+        for(int i=0; i<v; i++ ) {
+            if(vis[i] == 0) {
+                dfs(i, vis, adj, stack);
+            }
+        }
+        
+        for(int i=0; i<v; i++) dis[i] = (int) 1e9;
+        dis[0] = 0;
+        
+        while(!stack.isEmpty()) {
+            int node = stack.peek();
+            stack.pop();
+            
+            for(Pair i: adj.get(node) ) {
+                int ver = i.first;
+                int w = i.second;
+                if(dis[node] + w < dis[ver] && dis[node] != (int) 1e9) {
+                    dis[ver] = dis[node] + w;
+                }
+            }
+        }
+        
+        for(int i=0; i<v; i++ ) {
+            if(dis[i] ==  (int)(1e9)) {
+                dis[i] = -1;
+            }
+        }
+        
+        return dis;
+    }
+}
+```
