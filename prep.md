@@ -2111,3 +2111,49 @@ class Solution {
 ```
 
 ## shortest path algorithm questions
+
+### shortest path in undirected graph with a unit weight in all edges
+```
+class Solution {
+    public int[] shortestPath(int v, int[][] edges, int src) {
+        
+        List<List<Integer>> adj = new ArrayList<>();
+        
+        for(int i=0; i<v; i++ ) adj.add(new ArrayList<>());
+        
+        int dist[] = new int[v];
+        for(int i=0; i<v; i++ ) dist[i] = (int) 1e9;
+        
+        for(int[] i: edges) {
+            int u = i[0];
+            int v1 = i[1];
+            
+            adj.get(u).add(v1);
+            adj.get(v1).add(u);
+        }
+        
+        dist[src] = 0;
+        Queue<Integer> nq = new LinkedList<>();
+        nq.add(src);
+        
+        while(!nq.isEmpty()) {
+            int node = nq.poll();
+            
+            for(int i: adj.get(node)) {
+                if(dist[node] + 1 < dist[i]) {
+                    dist[i] = dist[node] + 1;
+                    nq.add(i);
+                }
+            }
+        }
+        
+        for(int i=0; i<v; i++ ) {
+            if(dist[i] == (int) 1e9) dist[i] = -1;
+        }
+        
+        return dist;
+        
+    }
+}
+
+```
