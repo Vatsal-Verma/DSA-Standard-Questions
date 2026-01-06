@@ -1824,3 +1824,53 @@ class Solution {
     }
 }
 ```
+
+### Detect Cycle in a Directed Acyclic Graph or Directed Graph
+```
+class Solution {
+    public boolean isCyclic(int v, int[][] edges) {
+        // code here
+        List<List<Integer>> adj = new ArrayList<>();
+        for(int i=0; i<v; i++ ) adj.add(new ArrayList<>());
+        
+        for(int[] i: edges) {
+            int u = i[0];
+            int v1 = i[1];
+            
+            adj.get(u).add(v1);
+        }
+        
+        int[] indegree = new int[v];
+        
+        for(int i=0; i<v; i++ ) {
+            for(int j: adj.get(i)) {
+                indegree[j] ++;
+            }
+        }
+        
+        Queue<Integer> nq = new LinkedList<>();
+        
+        for(int i=0; i<v; i++ ) {
+            if(indegree[i] == 0) {
+                nq.add(i);
+            }
+        }
+        
+        int check = 0;
+        
+        while(!nq.isEmpty()) {
+            int node = nq.poll();
+            check ++;
+            for(int i: adj.get(node)) {
+                indegree[i] --;
+                if(indegree[i] == 0) {
+                    nq.add(i);
+                }
+            }
+        }
+        
+        if(check != v) return true;
+        return false;
+    }
+}
+```
