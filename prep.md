@@ -1825,7 +1825,7 @@ class Solution {
 }
 ```
 
-### Detect Cycle in a Directed Acyclic Graph or Directed Graph
+### Detect Cycle in a Directed Acyclic Graph or Directed Graph (BFS approack i.e. topo sort, kahn's algorithm)
 ```
 class Solution {
     public boolean isCyclic(int v, int[][] edges) {
@@ -1870,6 +1870,49 @@ class Solution {
         }
         
         if(check != v) return true;
+        return false;
+    }
+}
+```
+### Cycle Detection in Directed Graph (DFS using vis and pathVis)
+```
+class Solution {
+    public boolean dfs(int node, List<List<Integer>> adj, int[] vis, int[] pathVis) {
+        vis[node] = 1;
+        pathVis[node] = 1;
+        
+        for(int i: adj.get(node)) {
+            if(vis[i] == 0) {
+                if(dfs(i, adj, vis, pathVis)) return true;
+            }
+            
+            else if(pathVis[i] == 1) return true;
+        }
+        
+        pathVis[node] = 0;
+        return false;
+    }
+    public boolean isCyclic(int v, int[][] edges) {
+        // code here
+        int vis[] = new int[v];
+        int pathVis[] = new int[v];
+        
+        List<List<Integer>> adj = new ArrayList<>();
+        
+        for(int i=0; i<v; i++ ) adj.add(new ArrayList<>());
+        
+        for(int[] i: edges) {
+            int u = i[0];
+            int v1 = i[1];
+            adj.get(u).add(v1);
+        }
+        
+        for(int i=0; i<v; i++ ) {
+            if(vis[i] == 0) {
+                if(dfs(i, adj, vis, pathVis)) return true;
+            }
+        }
+        
         return false;
     }
 }
