@@ -1917,3 +1917,49 @@ class Solution {
     }
 }
 ```
+### TOPO sort DFS
+```
+class Solution {
+    public void dfs(int node, List<List<Integer>> adj, int[] vis, Stack<Integer> stk) {
+        vis[node] = 1;
+        
+        for(int i: adj.get(node)) {
+            if(vis[i] == 0) {
+                dfs(i, adj, vis, stk);
+            }
+        }
+        
+        stk.push(node);
+        
+    }
+    public ArrayList<Integer> topoSort(int v, int[][] edges) {
+        List<List<Integer>> adj = new ArrayList<>();
+        int vis[] = new int[v];
+        
+        for(int i=0; i<v; i++ ) adj.add(new ArrayList<>());
+        
+        for(int[] i: edges) {
+            int u = i[0];
+            int v1 = i[1];
+            
+            adj.get(u).add(v1);
+        }
+        
+        Stack<Integer> stk = new Stack<>();
+        
+        for(int i=0; i<v; i++ ) {
+            if(vis[i] == 0) {
+                dfs(i, adj, vis, stk);
+            }
+        }
+        
+        ArrayList<Integer> result = new ArrayList<>();
+        while(!stk.isEmpty()) {
+            result.add(stk.pop());
+        }
+        
+        return result;
+        
+    }
+}
+```
