@@ -1794,3 +1794,33 @@ class Solution {
     }
 }
 ```
+### Is Graph Bipartite?
+```
+class Solution {
+    public boolean dfs(int node, int[] color, int col, int[][] graph) {
+        color[node] = col;
+        
+        for(int index: graph[node]) {
+            if(color[index] == -1) {
+                if(!dfs(index, color, 1 - col, graph)) return false;
+            }
+
+            else if(color[index] == col) return false;
+        }
+        return true;
+    }
+    public boolean isBipartite(int[][] graph) {
+
+        int v = graph.length;
+        int[] color = new int[v];
+        Arrays.fill(color, -1);
+
+        for(int i=0; i<v; i++ ) {
+            if(color[i] == -1)
+            if(!dfs(i, color, 0, graph)) return false;
+        }
+
+        return true;
+    }
+}
+```
