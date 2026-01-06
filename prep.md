@@ -1963,7 +1963,7 @@ class Solution {
     }
 }
 ```
-### Course Scheduler 
+### Course Scheduler I
 ```
 class Solution {
     public boolean canFinish(int v, int[][] mat) {
@@ -2003,5 +2003,59 @@ class Solution {
         }
       return v == a;
     }
+}
+```
+### Course Scheduler II
+```
+class Solution {
+    public int[] findOrder(int v, int[][] mat) {
+        
+        int[] result = new int[v];
+        List<List<Integer>> adj = new ArrayList<>();
+
+        for(int i=0; i<v; i++) {
+            adj.add(new ArrayList<>());
+        }
+
+        for(int[] i: mat) { 
+            int u = i[0];
+            int v1 = i[1];
+            adj.get(v1).add(u);
+        }
+
+        int[] indegree = new int[v];
+        Queue<Integer> nq = new LinkedList<>();
+
+        for(int i=0; i<v; i++) {
+            for(int j: adj.get(i)) {
+                indegree[j] ++;
+            }
+        }
+
+        for(int i=0; i<v; i++) {
+            if(indegree[i] == 0) {
+                nq.add(i);
+            }
+        }
+
+        int a = 0;
+
+        while(!nq.isEmpty()) {
+            int node = nq.poll();
+            result[a ++] = node;
+
+            for(int i: adj.get(node)) {
+                indegree[i] --;
+                if(indegree[i] == 0) {
+                    nq.add(i);
+                }
+            }
+        }
+        
+        if(a == v) return result;
+
+        return new int[] {};
+
+    }   
 }
 ```
