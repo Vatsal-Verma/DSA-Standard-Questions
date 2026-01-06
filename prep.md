@@ -1963,3 +1963,45 @@ class Solution {
     }
 }
 ```
+### Course Scheduler 
+```
+class Solution {
+    public boolean canFinish(int v, int[][] mat) {
+        
+        int indegree[] = new int[v];
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        Queue<Integer> nq = new LinkedList<>();
+
+        for(int i=0; i<v; i++) adj.add(new ArrayList<>());
+
+        for(int[] i: mat) {
+            int u = i[0];
+            int v1 = i[1];
+            adj.get(u).add(v1);
+        }
+
+        for(int i=0; i<v; i++) {
+            for(int j: adj.get(i)) {
+                indegree[j] ++;
+            }
+        }
+
+        for(int i=0; i<v; i ++) {
+            if(indegree[i] == 0) nq.add(i);
+        }
+
+        int a = 0;
+        while(!nq.isEmpty()) {
+            int node = nq.poll();
+            a ++;
+            for(int i: adj.get(node)) {
+                indegree[i] --;
+                if(indegree[i] == 0){
+                    nq.add(i);
+                }
+            }
+        }
+      return v == a;
+    }
+}
+```
