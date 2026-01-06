@@ -1503,6 +1503,41 @@ class Solution {
 ```
 
 # Graph
+
+### TC
+```
+**Problem**	                                 **Time Complexity**
+
+BFS Traversal	                                    O(V + E)
+DFS Traversal                                    	O(V + E)
+Number of Connected Components	                    O(V + E)
+Number of Provinces	                                O(V²) (Adj Matrix) / O(V + E) (Adj List)
+Number of Islands (grid)                        	O(N × M)
+
+Detect Cycle using DFS Undirected	                O(V + E)
+Detect Cycle using BFS (Kahn’s) Directed	        O(V + E)
+Detect Cycle using DFS Directed	                    O(V + E)
+
+Check Bipartite (BFS/DFS)                           O(V + E)
+
+Topological Sort (DFS)	                            O(V + E)
+Topological Sort (Kahn’s BFS)	                    O(V + E)
+Course Schedule I / II	                            O(V + E)
+
+Shortest Path in Unweighted Graph (BFS)	Unweighted	O(V + E)
+Dijkstra’s Algorithm	Weighted	                O(E log V)
+Bellman–Ford Algorithm	Weighted	                O(V × E)
+Floyd–Warshall	All Pairs	                        O(V³)
+
+Prim’s Algorithm	                                O(E log V)
+Kruskal’s Algorithm                                 O(E log E)
+
+Flood Fill	                                        O(N × M)
+Rotting Oranges	                                    O(N × M)
+Number of Islands	                                O(N × M)
+Shortest Path in Binary Matrix	                    O(N × M)
+
+```
 ### Number of provinces (Number of connected componenets)
 ```
 class Solution {
