@@ -2059,3 +2059,53 @@ class Solution {
     }   
 }
 ```
+### Find eventual safe states
+
+```
+class Solution {
+    public List<Integer> eventualSafeNodes(int[][] graph) {
+       
+        int v = graph.length;
+        List<List<Integer>> rev = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
+        int[] indegree = new int[v];
+        
+
+        for(int i=0; i<v; i ++) {
+            rev.add(new ArrayList<>());
+        }
+
+        for(int i=0; i<v; i ++) {
+            for(int adj: graph[i]) {
+                rev.get(adj).add(i);
+                indegree[i] ++;
+            }
+        }
+
+
+        Queue<Integer> nq = new LinkedList<>();
+
+        for(int i=0; i<v; i++) {
+            if(indegree[i] == 0) {
+                nq.add(i);
+            }
+        }
+        
+        while(!nq.isEmpty()) {
+            int node = nq.poll();
+            result.add(node);
+
+            for(int i: rev.get(node)) {
+                indegree[i] --;
+                if(indegree[i] == 0) {
+                    nq.add(i);
+                }
+            }
+        }
+
+        Collections.sort(result);
+        return result;
+        
+    }
+}
+```
