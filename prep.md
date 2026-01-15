@@ -2325,5 +2325,4 @@ class Solution {
         return dist;
     }
 }
-
 ```
