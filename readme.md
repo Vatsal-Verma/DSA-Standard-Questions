@@ -1,4 +1,4 @@
-# Interview Prep
+# Standard DSA Questions (Mostly asked)
 
 ---
 
