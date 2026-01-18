@@ -1,4 +1,4 @@
-# infosys prep
+# Interview Prep
 
 ---
 
