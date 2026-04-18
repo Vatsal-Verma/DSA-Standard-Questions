@@ -57,6 +57,7 @@ class Main {
 ```
 
 ### Roman to Integer
+[question link](https://leetcode.com/problems/roman-to-integer/description)
 ```
 class Solution {
     public int romanToInt(String s) {
@@ -91,7 +92,7 @@ class Solution {
 ```
 
 ### Integer to Roman
-
+[question link](https://leetcode.com/problems/integer-to-roman/description/)
 ```
 class Solution {
     public String intToRoman(int num) {
@@ -111,7 +112,7 @@ class Solution {
 ```
 
 ### 2 Sum
-
+[question link](https://leetcode.com/problems/two-sum/description/)
 ```
 class Solution {
     public int[] twoSum(int[] nums, int target) {
@@ -129,7 +130,7 @@ class Solution {
 ```
 
 ### 3 Sum
-
+[question link](https://leetcode.com/problems/3sum/description/)
 ```
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
@@ -156,6 +157,7 @@ class Solution {
 ```
 
 ### Group Anagrams
+[question link](https://leetcode.com/problems/group-anagrams/description/)
 ```
 class Solution {
     public List<List<String>> groupAnagrams(String[] str) {
@@ -194,7 +196,7 @@ class Main {
 }
 ```
 ### Generate all permutations
-
+[question link](https://leetcode.com/problems/permutations/description/)
 ```
 class Solution {
     public void generate(int[] nums, int index, List<List<Integer>> result) {
@@ -229,7 +231,7 @@ class Solution {
 }
 ```
 ### Generate all the permuatations with n1, n2, n3 ... numbers of each character
-
+[question link](https://leetcode.com/problems/permutations-ii/description)
 ```
 class Main {
     public static List<String> result = new ArrayList<>();
@@ -253,6 +255,7 @@ class Main {
 }
 ```
 ### Find first and last occurence of an element
+[question link](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/)
 ```
 class Solution {
     public int[] searchRange(int[] nums, int target) {
@@ -273,7 +276,7 @@ class Solution {
 }
 ```
 ### Spiral Matrix
-
+[question link](https://leetcode.com/problems/spiral-matrix/)
 ```
 class Solution {
     public List<Integer> spiralOrder(int[][] mat) {
@@ -319,7 +322,7 @@ class Solution {
 }
 ```
 ### Rotate Array 
-
+[question link](https://leetcode.com/problems/rotate-array/description/)
 ```
 class Solution {
     public void rotate(int[] nums, int k) {
@@ -342,6 +345,7 @@ class Solution {
 }
 ```
 ### Move all zero to end
+[question link](https://leetcode.com/problems/move-zeroes/description/)
 ```
 class Solution {
     public void moveZeroes(int[] nums) {
@@ -356,6 +360,7 @@ class Solution {
 }
 ```
 ### Maximum Product Subarray
+[question link](https://leetcode.com/problems/maximum-product-subarray/description/)
 ```
 Here we are supposed to find prefix product and suffix product, then we need to find maxium of them, if either prefix or suffix product becomes 0 then we update them to 1
 ```
@@ -380,7 +385,7 @@ class Solution {
 }
 ```
 ### Kadane's algorithm (max subarray sum)
-
+[question link](https://leetcode.com/problems/maximum-subarray/description/)
 ```
 class Solution {
     public int maxSubArray(int[] nums) {
@@ -397,6 +402,7 @@ class Solution {
 }
 ```
 ### Next Greater Element 
+[question link](https://leetcode.com/problems/next-greater-element-i/description/)
 ```
 class Solution {
     public static int[] nextGreaterElement(int[] arr) {
@@ -416,7 +422,7 @@ class Solution {
 ```
 
 ### Best day to buy and sell stocks 
-
+[question link](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 ```
 class Solution {
     public int maxProfit(int[] prices) {
@@ -434,6 +440,7 @@ class Solution {
 ```
 
 ### Buy and Sell Stock II
+[question link](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/)
 ```
 We need to keep in mind that we chekc for concecutive elements and check i-1 th element is smaller than i, then we do sum += prices[i] - prices[i - 1]
 ```
@@ -452,7 +459,7 @@ class Solution {
 ```
 
 ### Print Pascal's Triangle 
-
+[question link](https://leetcode.com/problems/pascals-triangle/description/)
 ```
 class Main {
     public static void main(String[] args) {
@@ -481,6 +488,7 @@ output:
 1 5 10 10 5 1 
 ```
 ### Print nth row of pascal's triangle
+[question link](https://leetcode.com/problems/pascals-triangle-ii/description/)
 ```
 class Main {
     public static void main(String[] args) {
@@ -500,6 +508,7 @@ output:
 1 5 10 10 5 1 
 ```
 ### First Missing and repeating element
+[question link](https://leetcode.com/problems/find-the-duplicate-number/description/)
 ```
 // Online Java Compiler
 // Use this editor to write, compile and run your Java code online
@@ -542,6 +551,7 @@ output: 2 6
 ```
 
 ### Sort Elements by Frequency 
+[question link](https://leetcode.com/problems/sort-characters-by-frequency/description/)
 ```
 class Solution {
     public String frequencySort(String s) {
@@ -573,6 +583,7 @@ class Solution {
 
 ```
 ### Longest Pallindromic Substring (O(n^2))
+[question link](https://leetcode.com/problems/longest-palindromic-substring/description/)
 ```
 class Solution {
     public boolean check(String s, int left, int right) {
