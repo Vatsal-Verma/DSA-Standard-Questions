@@ -35,8 +35,8 @@ class Solution {
 
 ```
 ### Plus One
+[question link](https://leetcode.com/problems/plus-one/)
 ```
-
 class Main {
     public static void main(String[] args) {
         int[] arr = {9, 9, 9};
